@@ -11,6 +11,30 @@
 using namespace std;
 
 /*
+OurScheme Project Grammar
+
+<S-EXP> ::= <ATOM> | LEFT_PAREN <S-EXP> {<S-EXP>} [ DOT <S-EXP> ] RIGHT_PAREN | QUOTE <S-EXP>
+
+<ATOM> ::= SYMBOL | INT | FLOAT | STRING | NIL | T | LEFT_PAREN_RIGHT_PAREN
+
+The concept of Project 1 consists of two main parts: Parser and Scanner.
+
+Parser: Responsible for building the parse tree based on the grammar rules.
+
+Scanner: Responsible for tokenizing the input for the Parser (the general principle is to Peek before getting it).
+
+External functionalities provided:
+
+GetToken: Returns the current token.
+PeekToken: Peeks at the next valid token.
+Internal functionalities:
+(1) Reads the input until a valid token is encountered. Constructs a class structure for that token, including attributes like Token_ID, Token_TYPE, Line_Num, and Line_Column. Informs the Parser about the token.
+
+(2) The method for determining a valid token is as follows:
+- Reads the first character of the input and determines the token format based on the first character.
+- Peeks at the next character. If it is not in the format of the current token, the current token is confirmed.
+- If the next character is in the format of the current token, read the character and repeat the previous step
+
   OurScheme Project 文法
 
   <S-EXP> ::= <ATOM> | LEFT_PAREN <S-EXP> {<S-EXP>} [ DOT <S-EXP> ] RIGHT_PAREN | QUOTE <S-EXP>
